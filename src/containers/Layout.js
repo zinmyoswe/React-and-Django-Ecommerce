@@ -38,6 +38,9 @@ class CustomLayout extends React.Component {
                 </Link>
               </React.Fragment>
             )}
+            <Link to="/products">
+              <Menu.Item header>Product</Menu.Item>
+            </Link>
           </Container>
         </Menu>
 
