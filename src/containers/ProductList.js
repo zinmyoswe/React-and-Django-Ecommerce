@@ -9,8 +9,10 @@ import {
   Label,
   Segment,
   Loader,
-  Dimmer
+  Dimmer,
+  Message
 } from "semantic-ui-react";
+import { productListURL } from "../constants";
 
 const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
 
@@ -24,7 +26,7 @@ class ProductList extends React.Component {
   componentDidMount() {
     this.setState({ loading: true });
     axios
-      .get("/some-url")
+      .get(productListURL)
       .then(res => {
         this.setState({ data: res.data, loading: false });
       })
