@@ -37,6 +37,13 @@ class ProductList extends React.Component {
     const { data, error, loading } = this.state;
     return (
       <Container>
+        {error && (
+          <Message
+            error
+            header="There was some errors with your submission"
+            content={JSON.stringify(error)}
+          />
+        )}
         {loading && (
           <Segment>
             <Dimmer active inverted>
