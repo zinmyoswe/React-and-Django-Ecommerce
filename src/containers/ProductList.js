@@ -1,5 +1,24 @@
 import React from "react";
-import { Button, Container, Icon, Image, Item, Label } from "semantic-ui-react";
+import axios from "axios";
+import {
+  Button,
+  Container,
+  Icon,
+  Image,
+  Item,
+  Label,
+  Segment,
+  Loader,
+  Dimmer
+} from "semantic-ui-react";
+
+<Segment>
+  <Dimmer active inverted>
+    <Loader inverted>Loading</Loader>
+  </Dimmer>
+
+  <Image src="/images/wireframe/short-paragraph.png" />
+</Segment>;
 
 const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
 
