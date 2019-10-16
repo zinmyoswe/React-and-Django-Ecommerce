@@ -14,14 +14,6 @@ import {
 
 const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
 
-<Segment>
-  <Dimmer active inverted>
-    <Loader inverted>Loading</Loader>
-  </Dimmer>
-
-  <Image src="/images/wireframe/short-paragraph.png" />
-</Segment>;
-
 class ProductList extends React.Component {
   state = {
     loading: false,
@@ -30,7 +22,7 @@ class ProductList extends React.Component {
   };
 
   componentDidMount() {
-    this.ListeningStateChangedEvent({ loading: true });
+    this.setState({ loading: true });
     axios
       .get("/some-url")
       .then(res => {
@@ -42,8 +34,18 @@ class ProductList extends React.Component {
   }
 
   render() {
+    const { data, error, loading } = this.state;
     return (
       <Container>
+        {loading && (
+          <Segment>
+            <Dimmer active inverted>
+              <Loader inverted>Loading</Loader>
+            </Dimmer>
+
+            <Image src="/images/wireframe/short-paragraph.png" />
+          </Segment>
+        )}
         <Item.Group divided>
           <Item>
             <Item.Image src="/images/wireframe/image.png" />
