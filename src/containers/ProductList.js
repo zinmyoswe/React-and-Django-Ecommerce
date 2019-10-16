@@ -57,21 +57,24 @@ class ProductList extends React.Component {
           </Segment>
         )}
         <Item.Group divided>
-          <Item>
-            <Item.Image src="/images/wireframe/image.png" />
+          {data.map(item => {
+            return <Item key={item.id}>
+            
+              <Item.Image src={item.image} />
 
-            <Item.Content>
-              <Item.Header as="a">12 Years a Slave</Item.Header>
-              <Item.Meta>
-                <span className="cinema">Union Square 14</span>
-              </Item.Meta>
-              <Item.Description>{paragraph}</Item.Description>
-              <Item.Extra>
-                <Label>IMAX</Label>
-                <Label icon="globe" content="Additional Languages" />
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+              <Item.Content>
+                <Item.Header as="a">{item.title}</Item.Header>
+                <Item.Meta>
+                  <span className="cinema">{item.category}</span>
+                </Item.Meta>
+                <Item.Description>{item.description}</Item.Description>
+                <Item.Extra>
+                  <Label>IMAX</Label>
+                  <Label icon="globe" content="Additional Languages" />
+                </Item.Extra>
+              </Item.Content>
+            </Item>
+          })}
 
           <Item>
             <Item.Image src="/images/wireframe/image.png" />
