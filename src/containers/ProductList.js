@@ -12,6 +12,8 @@ import {
   Dimmer
 } from "semantic-ui-react";
 
+const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
+
 <Segment>
   <Dimmer active inverted>
     <Loader inverted>Loading</Loader>
@@ -20,9 +22,25 @@ import {
   <Image src="/images/wireframe/short-paragraph.png" />
 </Segment>;
 
-const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
-
 class ProductList extends React.Component {
+  state = {
+    loading: false,
+    error: null,
+    data: []
+  };
+
+  componentDidMount() {
+    this.ListeningStateChangedEvent({ loading: true });
+    axios
+      .get("/some-url")
+      .then(res => {
+        this.setState({ data: res.data, loading: false });
+      })
+      .catch(err => {
+        this.setState({ error: err, loading: false });
+      });
+  }
+
   render() {
     return (
       <Container>
