@@ -3,6 +3,8 @@ from core.models import Item
 
 
 class ItemSerializer(serializers.ModelSerializer):
+    category = serializers.SerializerMethodField()
+
     class Meta:
         model = Item
         fields = (
@@ -15,3 +17,6 @@ class ItemSerializer(serializers.ModelSerializer):
             'description',
             'image'
         )
+
+    def get_category(self, obj):
+        return obj.get_category_display()

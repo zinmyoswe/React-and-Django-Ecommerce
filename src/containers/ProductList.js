@@ -28,6 +28,7 @@ class ProductList extends React.Component {
     axios
       .get(productListURL)
       .then(res => {
+        console.log(res.data);
         this.setState({ data: res.data, loading: false });
       })
       .catch(err => {
