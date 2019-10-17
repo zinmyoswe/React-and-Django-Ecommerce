@@ -12,7 +12,7 @@ import {
   Dimmer,
   Message
 } from "semantic-ui-react";
-import { productListURL } from "../constants";
+import { productListURL, addToCartURL } from "../constants";
 
 class ProductList extends React.Component {
   state = {
@@ -33,6 +33,19 @@ class ProductList extends React.Component {
         this.setState({ error: err, loading: false });
       });
   }
+
+  handleAddToCart = slug => {
+    this.setState({ loading: true });
+    axios
+      .get(productListURL)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ data: res.data, loading: false });
+      })
+      .catch(err => {
+        this.setState({ error: err, loading: false });
+      });
+  };
 
   render() {
     const { data, error, loading } = this.state;
@@ -69,7 +82,11 @@ class ProductList extends React.Component {
                   <Item.Extra>
                     <Label>IMAX</Label>
                     <Label icon="globe" content="Additional Languages" />
-                    <Button primary floated="right">
+                    <Button
+                      primary
+                      floated="right"
+                      onClick={() => this.handleAddToCart(item.slug)}
+                    >
                       Add to Cart
                       <Icon name="right shopping bag" />
                     </Button>
@@ -91,8 +108,6 @@ class ProductList extends React.Component {
               </Item>
             );
           })}
-
-         
         </Item.Group>
       </Container>
     );
