@@ -14,8 +14,6 @@ import {
 } from "semantic-ui-react";
 import { productListURL } from "../constants";
 
-const paragraph = <Image src="/images/wireframe/short-paragraph.png" />;
-
 class ProductList extends React.Component {
   state = {
     loading: false,
@@ -58,22 +56,40 @@ class ProductList extends React.Component {
         )}
         <Item.Group divided>
           {data.map(item => {
-            return <Item key={item.id}>
-            
-              <Item.Image src={item.image} />
+            return (
+              <Item key={item.id}>
+                <Item.Image src={item.image} />
 
-              <Item.Content>
-                <Item.Header as="a">{item.title}</Item.Header>
-                <Item.Meta>
-                  <span className="cinema">{item.category}</span>
-                </Item.Meta>
-                <Item.Description>{item.description}</Item.Description>
-                <Item.Extra>
-                  <Label>IMAX</Label>
-                  <Label icon="globe" content="Additional Languages" />
-                </Item.Extra>
-              </Item.Content>
-            </Item>
+                <Item.Content>
+                  <Item.Header as="a">{item.title}</Item.Header>
+                  <Item.Meta>
+                    <span className="cinema">{item.category}</span>
+                  </Item.Meta>
+                  <Item.Description>{item.description}</Item.Description>
+                  <Item.Extra>
+                    <Label>IMAX</Label>
+                    <Label icon="globe" content="Additional Languages" />
+                    <Button primary floated="right">
+                      Add to Cart
+                      <Icon name="right shopping bag" />
+                    </Button>
+                    {item.discount_price && (
+                      <Label
+                        color={
+                          item.label === "primary"
+                            ? "blue"
+                            : item.label === "secondary"
+                            ? "green"
+                            : "olive"
+                        }
+                      >
+                        {item.label}
+                      </Label>
+                    )}
+                  </Item.Extra>
+                </Item.Content>
+              </Item>
+            );
           })}
 
           <Item>
@@ -84,7 +100,7 @@ class ProductList extends React.Component {
               <Item.Meta>
                 <span className="cinema">IFC Cinema</span>
               </Item.Meta>
-              <Item.Description>{paragraph}</Item.Description>
+              <Item.Description></Item.Description>
               <Item.Extra>
                 <Button primary floated="right">
                   Buy tickets
@@ -103,7 +119,7 @@ class ProductList extends React.Component {
               <Item.Meta>
                 <span className="cinema">IFC</span>
               </Item.Meta>
-              <Item.Description>{paragraph}</Item.Description>
+              <Item.Description></Item.Description>
               <Item.Extra>
                 <Button primary floated="right">
                   Add to Cart
