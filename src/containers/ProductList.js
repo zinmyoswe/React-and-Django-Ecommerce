@@ -37,10 +37,11 @@ class ProductList extends React.Component {
   handleAddToCart = slug => {
     this.setState({ loading: true });
     axios
-      .get(productListURL)
+      .post(addToCartURL, { slug })
       .then(res => {
         console.log(res.data);
-        this.setState({ data: res.data, loading: false });
+        // update the cart count
+        this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({ error: err, loading: false });
