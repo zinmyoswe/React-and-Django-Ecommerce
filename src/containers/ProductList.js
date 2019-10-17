@@ -92,42 +92,7 @@ class ProductList extends React.Component {
             );
           })}
 
-          <Item>
-            <Item.Image src="/images/wireframe/image.png" />
-
-            <Item.Content>
-              <Item.Header as="a">My Neighbor Totoro</Item.Header>
-              <Item.Meta>
-                <span className="cinema">IFC Cinema</span>
-              </Item.Meta>
-              <Item.Description></Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Buy tickets
-                  <Icon name="right chevron" />
-                </Button>
-                <Label>Limited</Label>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-
-          <Item>
-            <Item.Image src="/images/wireframe/image.png" />
-
-            <Item.Content>
-              <Item.Header as="a">Watchmen</Item.Header>
-              <Item.Meta>
-                <span className="cinema">IFC</span>
-              </Item.Meta>
-              <Item.Description></Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Add to Cart
-                  <Icon name="right shopping bag" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+         
         </Item.Group>
       </Container>
     );
