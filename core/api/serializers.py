@@ -17,7 +17,7 @@ class ItemSerializer(serializers.ModelSerializer):
             'label',
             'slug',
             'description',
-            'image'
+            'image',
         )
 
     def get_category(self, obj):
