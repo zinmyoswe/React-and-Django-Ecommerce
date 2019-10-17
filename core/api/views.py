@@ -1,6 +1,8 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from core.models import Item
 from .serializers import ItemSerializer
 
@@ -13,7 +15,9 @@ class ItemListView(ListAPIView):
 
 class AddToCartView(APIView):
     def post(self, request, *args, **kwargs):
-
+        slug = request.data.get('slug', None)
+        if slug is None:
+            return Response({"message": "Invalid request"}, status=HTTP_400_BAD_REQUEST)
         item = get_object_or_404(Item, slug=slug)
         order_item, created = OrderItem.objects.get_or_create(
             item=item,
