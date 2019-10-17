@@ -11,6 +11,10 @@ class ItemListView(ListAPIView):
     queryset = Item.objects.all()
 
 
+class AddToCartView(APIView):
+    def post(self, request, *args, **kwargs):
+
+
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
