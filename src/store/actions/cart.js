@@ -8,10 +8,10 @@ export const cartStart = () => {
   };
 };
 
-export const cartSuccess = token => {
+export const cartSuccess = data => {
+  console.log(data);
   return {
-    type: CART_SUCCESS,
-    token: token
+    type: CART_SUCCESS
   };
 };
 
