@@ -13,6 +13,7 @@ import {
   Message
 } from "semantic-ui-react";
 import { productListURL, addToCartURL } from "../constants";
+import { authAxios } from "../utils";
 
 class ProductList extends React.Component {
   state = {
@@ -23,7 +24,7 @@ class ProductList extends React.Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    authAxios
+    axios
       .get(productListURL)
       .then(res => {
         console.log(res.data);
@@ -36,7 +37,7 @@ class ProductList extends React.Component {
 
   handleAddToCart = slug => {
     this.setState({ loading: true });
-    axios
+    authAxios
       .post(addToCartURL, { slug })
       .then(res => {
         console.log(res.data);
