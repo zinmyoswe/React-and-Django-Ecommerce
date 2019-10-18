@@ -21,3 +21,22 @@ export const cartFail = error => {
     error: error
   };
 };
+
+export const cartFetch = () => {
+  return dispatch => {
+    dispatch(cartStart());
+    authAxios
+      .post("http://127.0.0.1:8000/rest-auth/login/")
+      .then(res => {
+        const token = res.data.key;
+        const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+        localStorage.setItem("token", token);
+        localStorage.setItem("expirationDate", expirationDate);
+        dispatch(authSuccess(token));
+        dispatch(checkAuthTimeout(3600));
+      })
+      .catch(err => {
+        dispatch(authFail(err));
+      });
+  };
+};
