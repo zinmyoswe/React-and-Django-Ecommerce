@@ -23,10 +23,7 @@ class ProductList extends React.Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    axios.defaults.headers = {
-      Authorization: `Token ${}`
-    }
-    axios
+    authAxios
       .get(productListURL)
       .then(res => {
         console.log(res.data);
