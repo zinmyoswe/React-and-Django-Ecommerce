@@ -21,8 +21,7 @@ class CustomLayout extends React.Component {
   }
 
   render() {
-    const { authenticated, cart } = this.props;
-    console.log(cart);
+    const { authenticated, cart, loading } = this.props;
     return (
       <div>
         <Menu inverted>
@@ -48,7 +47,12 @@ class CustomLayout extends React.Component {
               <Menu.Item header>Product</Menu.Item>
             </Link>
             <Menu.Menu inverted position="right">
-              <Dropdown text="Dropdown" pointing className="link item">
+              <Dropdown
+                loading={loading}
+                text={`${cart !== null ? cart.order_items.length : 0}`}
+                pointing
+                className="link item"
+              >
                 <Dropdown.Menu>
                   <Dropdown.Item>List Item</Dropdown.Item>
                   <Dropdown.Item>List Item</Dropdown.Item>
@@ -140,7 +144,8 @@ class CustomLayout extends React.Component {
 const mapStateToProps = state => {
   return {
     authenticated: state.auth.token !== null,
-    cart: state.cart.shoppingCart
+    cart: state.cart.shoppingCart,
+    loading: state.cart.loading
   };
 };
 
