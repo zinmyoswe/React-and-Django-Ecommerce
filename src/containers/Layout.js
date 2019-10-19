@@ -13,6 +13,7 @@ import {
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/auth";
+import { fetchCart } from "../store/actions/cart";
 
 class CustomLayout extends React.Component {
   render() {
@@ -122,7 +123,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    fetchCart: () => dispatch(fetchCart())
   };
 };
 

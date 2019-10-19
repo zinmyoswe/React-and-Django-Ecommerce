@@ -23,7 +23,7 @@ export const cartFail = error => {
   };
 };
 
-export const cartFetch = () => {
+export const fetchCart = () => {
   return dispatch => {
     dispatch(cartStart());
     authAxios
