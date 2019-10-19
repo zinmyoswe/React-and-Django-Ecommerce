@@ -49,6 +49,25 @@ class CustomLayout extends React.Component {
             </Link>
           </Container>
         </Menu>
+        <Menu.Menu inverted position="right">
+          <Dropdown text="Dropdown" pointing className="link item">
+            <Dropdown.Menu>
+              <Dropdown.Item>List Item</Dropdown.Item>
+              <Dropdown.Item>List Item</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Header>Header Item</Dropdown.Header>
+              <Dropdown.Item>
+                <i className="dropdown icon" />
+                <span className="text">Submenu</span>
+                <Dropdown.Menu>
+                  <Dropdown.Item>List Item</Dropdown.Item>
+                  <Dropdown.Item>List Item</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown.Item>
+              <Dropdown.Item>List Item</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
 
         {this.props.children}
 
