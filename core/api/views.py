@@ -53,4 +53,9 @@ class AddToCartView(APIView):
         serializer_class = OrderSerializer
         permission_classes = (IsAuthenticated,)
 
-        def get_queryset(self):
+        def get_object(self):
+            try:
+                order = Order.objects.get(
+                    user=self.request.user, ordered=False)
+            except ObjectDoesNotExist:
+                return Response({"message": "You do not have an active order"}, status=HTTP_400_BAD_REQUEST)

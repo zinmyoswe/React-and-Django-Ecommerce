@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CART_START, CART_SUCCESS, CART_FAIL } from "./actionTypes";
 import { authAxios } from "../../utils";
-import { fetchCart } from "../../constants";
+import { orderSummaryURL } from "../../constants";
 
 export const cartStart = () => {
   return {
@@ -27,7 +27,7 @@ export const cartFetch = () => {
   return dispatch => {
     dispatch(cartStart());
     authAxios
-      .post(fetchCart)
+      .post(orderSummaryURL)
       .then(res => {
         dispatch(cartSuccess(res.data));
       })
