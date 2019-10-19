@@ -27,12 +27,12 @@ export const fetchCart = () => {
   return dispatch => {
     dispatch(cartStart());
     authAxios
-      .post(orderSummaryURL)
+      .get(orderSummaryURL)
       .then(res => {
         dispatch(cartSuccess(res.data));
       })
       .catch(err => {
-        dispatch(authFail(err));
+        dispatch(cartFail(err));
       });
   };
 };
