@@ -48,3 +48,9 @@ class AddToCartView(APIView):
             order.items.add(order_item)
             # messages.info(request, "This item was added to your cart.")
             return Response(status=HTTP_200_OK)
+
+    class OrderDetailView(RetrieveAPIView):
+        serializer_class = OrderSerializer
+        permission_classes = (IsAuthenticated,)
+
+        def get_queryset(self):
