@@ -16,6 +16,10 @@ import { logout } from "../store/actions/auth";
 import { fetchCart } from "../store/actions/cart";
 
 class CustomLayout extends React.Component {
+  componentDidMount() {
+    this.props.fetchCart();
+  }
+
   render() {
     const { authenticated, cart } = this.props;
     console.log(cart);
