@@ -47,27 +47,27 @@ class CustomLayout extends React.Component {
             <Link to="/products">
               <Menu.Item header>Product</Menu.Item>
             </Link>
-          </Container>
-        </Menu>
-        <Menu.Menu inverted position="right">
-          <Dropdown text="Dropdown" pointing className="link item">
-            <Dropdown.Menu>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Header Item</Dropdown.Header>
-              <Dropdown.Item>
-                <i className="dropdown icon" />
-                <span className="text">Submenu</span>
+            <Menu.Menu inverted position="right">
+              <Dropdown text="Dropdown" pointing className="link item">
                 <Dropdown.Menu>
                   <Dropdown.Item>List Item</Dropdown.Item>
                   <Dropdown.Item>List Item</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Header>Header Item</Dropdown.Header>
+                  <Dropdown.Item>
+                    <i className="dropdown icon" />
+                    <span className="text">Submenu</span>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>List Item</Dropdown.Item>
+                      <Dropdown.Item>List Item</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown.Item>
+                  <Dropdown.Item>List Item</Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu.Menu>
+              </Dropdown>
+            </Menu.Menu>
+          </Container>
+        </Menu>
 
         {this.props.children}
 
