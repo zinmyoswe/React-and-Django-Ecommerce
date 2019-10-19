@@ -1,6 +1,7 @@
 import axios from "axios";
 import { CART_START, CART_SUCCESS, CART_FAIL } from "./actionTypes";
 import { authAxios } from "../../utils";
+import { fetchCart } from "../../constants";
 
 export const cartStart = () => {
   return {
@@ -26,14 +27,9 @@ export const cartFetch = () => {
   return dispatch => {
     dispatch(cartStart());
     authAxios
-      .post("http://127.0.0.1:8000/rest-auth/login/")
+      .post(fetchCart)
       .then(res => {
-        const token = res.data.key;
-        const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-        localStorage.setItem("token", token);
-        localStorage.setItem("expirationDate", expirationDate);
-        dispatch(authSuccess(token));
-        dispatch(checkAuthTimeout(3600));
+        dispatch(cartSuccess(res.data));
       })
       .catch(err => {
         dispatch(authFail(err));
