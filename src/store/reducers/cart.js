@@ -2,7 +2,7 @@ import { CART_START, CART_SUCCESS, CART_FAIL } from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  token: null,
+  shoppingCart: null,
   error: null,
   loading: false
 };
@@ -16,7 +16,7 @@ const cartStart = (state, action) => {
 
 const cartSuccess = (state, action) => {
   return updateObject(state, {
-    token: action.token,
+    shoppingCart: action.data,
     error: null,
     loading: false
   });
