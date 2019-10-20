@@ -30,49 +30,56 @@ class CustomLayout extends React.Component {
             <Link to="/">
               <Menu.Item header>Home</Menu.Item>
             </Link>
-            {authenticated ? (
-              <Menu.Item header onClick={() => this.props.logout()}>
-                Logout
-              </Menu.Item>
-            ) : (
-              <React.Fragment>
-                <Link to="/login">
-                  <Menu.Item header>Login</Menu.Item>
-                </Link>
-                <Link to="/signup">
-                  <Menu.Item header>Signup</Menu.Item>
-                </Link>
-              </React.Fragment>
-            )}
+
             <Link to="/products">
               <Menu.Item header>Product</Menu.Item>
             </Link>
             <Menu.Menu inverted position="right">
-              <Dropdown
-                icon="cart"
-                loading={loading}
-                text={`${
-                  cart ? (cart.order_items ? cart.order_items.length : 0) : 0
-                }`}
-                pointing
-                className="link item"
-              >
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Header>Header Item</Dropdown.Header>
-                  <Dropdown.Item>
-                    <i className="dropdown icon" />
-                    <span className="text">Submenu</span>
+              {authenticated ? (
+                <React.Fragment>
+                  <Dropdown
+                    icon="cart"
+                    loading={loading}
+                    text={`${
+                      cart
+                        ? cart.order_items
+                          ? cart.order_items.length
+                          : 0
+                        : 0
+                    }`}
+                    pointing
+                    className="link item"
+                  >
                     <Dropdown.Menu>
                       <Dropdown.Item>List Item</Dropdown.Item>
                       <Dropdown.Item>List Item</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Header>Header Item</Dropdown.Header>
+                      <Dropdown.Item>
+                        <i className="dropdown icon" />
+                        <span className="text">Submenu</span>
+                        <Dropdown.Menu>
+                          <Dropdown.Item>List Item</Dropdown.Item>
+                          <Dropdown.Item>List Item</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown.Item>
+                      <Dropdown.Item>List Item</Dropdown.Item>
                     </Dropdown.Menu>
-                  </Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  </Dropdown>
+                  <Menu.Item header onClick={() => this.props.logout()}>
+                    Logout
+                  </Menu.Item>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <Link to="/login">
+                    <Menu.Item header>Login</Menu.Item>
+                  </Link>
+                  <Link to="/signup">
+                    <Menu.Item header>Signup</Menu.Item>
+                  </Link>
+                </React.Fragment>
+              )}
             </Menu.Menu>
           </Container>
         </Menu>
