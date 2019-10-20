@@ -43,7 +43,6 @@ class ProductList extends React.Component {
       .post(addToCartURL, { slug })
       .then(res => {
         console.log(res.data);
-        this.props.fetchCart();
         this.setState({ loading: false });
       })
       .catch(err => {
