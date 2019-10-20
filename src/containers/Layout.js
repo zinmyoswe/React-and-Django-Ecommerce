@@ -22,6 +22,7 @@ class CustomLayout extends React.Component {
 
   render() {
     const { authenticated, cart, loading } = this.props;
+    console.log(cart);
     return (
       <div>
         <Menu inverted>
@@ -48,8 +49,11 @@ class CustomLayout extends React.Component {
             </Link>
             <Menu.Menu inverted position="right">
               <Dropdown
+                icon="cart"
                 loading={loading}
-                text={`${cart !== null ? cart.order_items.length : 0}`}
+                text={`${
+                  cart ? (cart.order_items ? cart.order_items.length : 0) : 0
+                }`}
                 pointing
                 className="link item"
               >

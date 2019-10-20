@@ -35,18 +35,15 @@ class AddToCartView(APIView):
             if order.items.filter(item__slug=item.slug).exists():
                 order_item.quantity += 1
                 order_item.save()
-                # messages.info(request, "This item quantity was updated.")
                 return Response(status=HTTP_200_OK)
             else:
                 order.items.add(order_item)
-                # messages.info(request, "This item was added to your cart.")
                 return Response(status=HTTP_200_OK)
         else:
             ordered_date = timezone.now()
             order = Order.objects.create(
                 user=request.user, ordered_date=ordered_date)
             order.items.add(order_item)
-            # messages.info(request, "This item was added to your cart.")
             return Response(status=HTTP_200_OK)
 
 
