@@ -51,8 +51,21 @@ class CustomLayout extends React.Component {
                     className="link item"
                   >
                     <Dropdown.Menu>
-                      <Dropdown.Item>List Item</Dropdown.Item>
-                      <Dropdown.Item>List Item</Dropdown.Item>
+                      {cart &&
+                        cart.order_items &&
+                        cart.order_items.map(order_item => {
+                          return (
+                            <Dropdown.Item key={order_item.id}>
+                              {order_item.quantity} *{order_item.item}
+                            </Dropdown.Item>
+                          );
+                        })}
+                      {cart &&
+                      cart.order_items &&
+                      cart.order_items.length < 1 ? (
+                        <Dropdown.Item>No items in your cart</Dropdown.Item>
+                      ) : null}
+
                       <Dropdown.Divider />
                       <Dropdown.Header>Header Item</Dropdown.Header>
                       <Dropdown.Item>
